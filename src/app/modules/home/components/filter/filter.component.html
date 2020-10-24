@@ -1,0 +1,25 @@
+<div>
+    <h3>Filters</h3>
+    <p class="filter-heading text-center">Launch Year</p>
+    <hr>
+    <div class="filter-button-wrap">
+        <button class="filter-button-wrap__button" *ngFor="let year of yearArr" [ngClass]="{'active': selectedYear==year}"
+            (click)="updateYear(year)">{{year}}</button>
+    </div>
+    <p class="filter-heading text-center">Successful Launch</p>
+    <hr>
+    <div class="filter-button-wrap">
+        <button class="filter-button-wrap__button" [ngClass]="{'active': selectedLaunch===true}"
+            (click)="updateLaunch(true)">True</button>
+        <button class="filter-button-wrap__button" [ngClass]="{'active': selectedLaunch===false}"
+            (click)="updateLaunch(false)">False</button>
+    </div>
+    <p class="filter-heading text-center">Successful Landing</p>
+    <hr>
+    <div class="filter-button-wrap">
+        <button class="filter-button-wrap__button" [ngClass]="{'active': selectedLand===true}"
+            (click)="updateLand(true)">True</button>
+        <button class="filter-button-wrap__button" [ngClass]="{'active': selectedLand===false}"
+            (click)="updateLand(false)">False</button>
+    </div>
+</div>

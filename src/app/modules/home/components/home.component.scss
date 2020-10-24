@@ -1,0 +1,33 @@
+.home-body {
+  display: flex;
+  justify-content: center;
+  .home-body__wrapper {
+    max-width: 1440px;
+    width: 100%;
+    padding: 0px 10px;
+    .home-body__header,
+    .home-body__footer {
+      padding: 10px 0px;
+    }
+    .home-body__main {
+      display: flex;
+      .home-body__main__nav {
+        .home-body__main__nav__card {
+          margin-bottom: 10px;
+        }
+      }
+      .home-body__main__template {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0px 0px 0px 10px;
+        .home-body__main__template__card {
+          margin-bottom: 10px;
+        }
+      }
+      @media only screen and (max-width: 700px) {
+        flex-direction: column;
+      }
+    }
+  }
+}

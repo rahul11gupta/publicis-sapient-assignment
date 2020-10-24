@@ -1,0 +1,19 @@
+.filter-heading {
+  margin: 20px 0px 0px 0px;
+}
+.filter-button-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .filter-button-wrap__button {
+    width: 45%;
+    margin: 20px 0px 0px 0px;
+    background-color: #c5df9b;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    &.active {
+      background-color: #7bb902;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<img class="resImg" alt="{{data.mission_name}}" src="{{data.links.mission_patch_small}}">
+<p class="bold-text main__title">{{data.mission_name}} # {{data.flight_number}}</p>
+<p class="bold-text main__option">Mission Ids:</p>
+<ul>
+    <li *ngFor="let id of data.mission_id">{{id}}</li>
+</ul>
+<p class="bold-text main__option">Launch Year: {{data.launch_year}}</p>
+<p class="bold-text main__option">Successful Launch: {{data.launch_success}}</p>
+<p class="bold-text main__option">Successful Landing: {{data.launch_landing}}</p>

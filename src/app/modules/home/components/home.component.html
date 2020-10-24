@@ -1,0 +1,26 @@
+<section class="home-body">
+    <div class="home-body__wrapper">
+        <h2 class="home-body__header">SpaceX Launch Programs</h2>
+        <div class="home-body__main">
+            <nav class="w-20 home-body__main__nav">
+                <div class="home-body__main__nav__card">
+                    <ps-card [template]="filterTemplate"></ps-card>
+                </div>
+            </nav>
+            <div class="w-80 home-body__main__template">
+                <div class="w-24 home-body__main__template__card" *ngFor="let data of apiData">
+                    <ps-card [template]="mainTemplate" [data]="data"></ps-card>
+                </div>
+            </div>
+        </div>
+        <h3 class="home-body__footer text-center">Developed by: Rahul Gupta</h3>
+    </div>
+</section>
+
+
+<ng-template #filterTemplate>
+    <ps-filter (paramEmitter)="updateGetParams($event)"></ps-filter>
+</ng-template>
+<ng-template #mainTemplate let-data>
+    <ps-main [data]="data"></ps-main>
+</ng-template>
