@@ -12,7 +12,7 @@
     "serve:ssr": "node dist/ps-assignment/server/main.js",
     "build:ssr": "ng build --prod && ng run ps-assignment:server:production",
     "prerender": "ng run ps-assignment:prerender",
-    "start:heroku": "node dist/server",
+    "start:heroku": "node dist/ps-assignment/server/main.js",
     "postinstall": "npm run build:ssr"
   },
   "private": true,
