@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   callLaunchDetails() {
+    this.apiData = [];
     this.getLaunchDataSubscription = this.homeService.getLaunchData(this.data).pipe(
       takeUntil(this.ngUnsubscribe)).subscribe(res => {
         this.apiData = res;
@@ -40,7 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.data.params.splice(i, 1);
       }
     });
-    this.data.params.push(event);
+    if (event.value !== null)
+      this.data.params.push(event);
     this.callLaunchDetails();
   }
 
