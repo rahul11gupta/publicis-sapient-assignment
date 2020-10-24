@@ -19,28 +19,45 @@ export class FilterComponent implements OnInit {
     this.yearArr = this.appConstantConfig.APP['yearArray'];
   }
 
-  updateLaunch(value: boolean) {
-    this.selectedLaunch = value;
-    this.paramEmitter.emit({
-      param: 'launch_success',
-      value: value
-    });
+  updateParam(paramName: string, value: any) {
+    let data = { param: paramName, value: null };
+    switch (paramName) {
+      case 'launch_year': this.updateYear(data, value); break;
+      case 'launch_success': this.updateLaunch(data, value); break;
+      case 'land_success': this.updateLand(data, value); break;
+    }
+
+    this.paramEmitter.emit(data);
   }
 
-  updateLand(value: boolean) {
-    this.selectedLand = value;
-    this.paramEmitter.emit({
-      param: 'land_success',
-      value: value
-    });
+  updateLaunch(data: IHttpParams, value: boolean) {
+    if (value !== this.selectedLaunch) {
+      this.selectedLaunch = value;
+      data['value'] = value;
+    } else {
+      this.selectedLaunch = null;
+    }
+    return data;
   }
 
-  updateYear(year: string) {
-    this.selectedYear = year;
-    this.paramEmitter.emit({
-      param: 'launch_year',
-      value: year
-    });
+  updateLand(data: IHttpParams, value: boolean) {
+    if (value !== this.selectedLand) {
+      this.selectedLand = value;
+      data['value'] = value;
+    } else {
+      this.selectedLand = null;
+    }
+    return data;
+  }
+
+  updateYear(data: IHttpParams, year: string): IHttpParams {
+    if (year !== this.selectedYear) {
+      this.selectedYear = year;
+      data['value'] = year;
+    } else {
+      this.selectedYear = null;
+    }
+    return data;
   }
 
 }
