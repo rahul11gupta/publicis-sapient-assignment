@@ -11,4 +11,14 @@ Though a fairly simple requirement, the project involve various concepts of Angu
 5. Also in the Shared Module, I created a reusable http client wrapper service for **HttpClientWrapperService** with some functions which helps to prevent repeated code wriiten during calling a backend API
 6. There is model folder which contains Interfaces to be implemented by each Service as well as dataTypes of custom variables. Creating models helps with strong typing of the Application (reduces errors in the application) and also with Dependency Inversion Control
 7. **app.constants** is a module responsible for serving constants throughout the application with the help of Injection tokens.
-8. The flow of the application is straightforward. When any filter is clicked, the respective data is emitted out from the filter component and it is recieved by the home component. The Home component makes a backend call with the url parameters and after recieving the data it is input to the card component which in turn injects the data into the main coponent.
+8. The flow of the application is straightforward. When any filter is clicked, the respective data is emitted out from the filter component and it is recieved by the home component. The Home component makes a backend call with the url parameters and after recieving the data it is input to the card component which in turn injects the data into the main component.
+
+Since there was no mention of how to handle the empty values, I have kept them as it is in the view. 
+
+Hope to have a discussion soon 😁 
+
+## Performance Screenshot
+Below is the screenshot for the maximum performance I was able to achieve on a local server:
+
+
+![Performance Screenshot](https://github.com/rahul11gupta/publicis-sapient-assignment/blob/master/Performance.PNG)
