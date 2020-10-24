@@ -18,11 +18,17 @@
       }
       .home-body__main__template {
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
         padding: 0px 0px 0px 10px;
         .home-body__main__template__card {
           margin-bottom: 10px;
+          margin-right: 1%;
+          @media only screen and (max-width: 700px) {
+            margin-right: 0;
+          }
+        }
+        @media only screen and (max-width: 700px) {
+          padding: 0;
         }
       }
       @media only screen and (max-width: 700px) {
