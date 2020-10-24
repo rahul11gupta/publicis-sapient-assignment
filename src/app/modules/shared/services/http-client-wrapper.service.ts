@@ -12,6 +12,7 @@ export class HttpClientWrapperService implements IHttpWrapperService {
 
   constructor(private http: HttpClient, @Inject(SERVICE_CONSTANTS) private serviceConstantsConfig: ServiceConstantConfig, ) { }
 
+  //Function to set headers for backend requests
   setHeaders(headers: IHttpHeaders[]): HttpHeaders {
     let reqHeader = new HttpHeaders();
     headers.forEach(h => {
@@ -19,7 +20,7 @@ export class HttpClientWrapperService implements IHttpWrapperService {
     });
     return reqHeader;
   }
-
+  //Function to set url paeameters for backend requests
   setParams(params: IHttpParams[]): HttpParams {
     let reqParam = new HttpParams();
     params.forEach(p => {
@@ -27,12 +28,12 @@ export class HttpClientWrapperService implements IHttpWrapperService {
     });
     return reqParam;
   }
-
+  //Function to set url for backend requests
   setUrl(url: string): string {
     let apiUrl = this.serviceConstantsConfig.apiUrl + url;
     return apiUrl;
   }
-
+  //Wrapper function for HTTPCLient.get()
   get(url: string, data: IHttpGetData): Observable<any> {
     let reqHeader = this.setHeaders(data.headers);
     let reqParam = this.setParams(data.params);
@@ -44,7 +45,7 @@ export class HttpClientWrapperService implements IHttpWrapperService {
       catchError(this.catchError)
     );
   }
-
+  //Common Error-Handling Function for different Http Request Types
   catchError(error: HttpErrorResponse): Observable<never> {
     return throwError(error);
   }

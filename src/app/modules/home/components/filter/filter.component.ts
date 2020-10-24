@@ -8,7 +8,7 @@ import { IHttpParams } from 'src/app/models/http-wrapper.service.model';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-  yearArr;
+  yearArr: any;
   selectedYear: string;
   selectedLand: boolean;
   selectedLaunch: boolean;
@@ -18,7 +18,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
     this.yearArr = this.appConstantConfig.APP['yearArray'];
   }
-
+  //Function called from view  which will handle different filter parameters
   updateParam(paramName: string, value: any) {
     let data = { param: paramName, value: null };
     switch (paramName) {
