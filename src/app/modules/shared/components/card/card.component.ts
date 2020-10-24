@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'ps-card',
@@ -6,8 +6,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnChanges {
-  @Input('template') template;
-  @Input('data') data;
+  @Input('template') template: TemplateRef<any>;
+  @Input('data') data: any;
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {

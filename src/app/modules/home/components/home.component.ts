@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { HomeService } from '../services/home.service';
 import { IHttpGetData, IHttpParams } from 'src/app/models/http-wrapper.service.model';
 import { Subscription, Subject } from 'rxjs';
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }]
   };
   private ngUnsubscribe: Subject<any> = new Subject();
+  @ViewChild('emptyMessage') emptyMessage: ElementRef<any>;
   constructor(private homeService: HomeService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -31,9 +32,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Calling backend API `launches` with url params
   callLaunchDetails() {
     this.apiData = [];
+    if (this.emptyMessage)
+      this.emptyMessage.nativeElement.innerText = "Loading...";
     this.getLaunchDataSubscription = this.homeService.getLaunchData(this.data).pipe(
       takeUntil(this.ngUnsubscribe)).subscribe(res => {
         this.apiData = res;
+        if (this.apiData.length == 0) {
+          this.emptyMessage.nativeElement.innerText = "No Data";
+        }
       }, e => { console.log(e) });
   }
   // function to update the parameters based on the user entry
@@ -68,7 +74,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
         this.callLaunchDetails();
       }, e => { console.log(e) });
-
   }
 
   // Performing cleanup to prevent memory leaks

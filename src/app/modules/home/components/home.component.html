@@ -8,7 +8,7 @@
                 </div>
             </nav>
             <div class="w-80 home-body__main__template" [ngClass]="{'align-center': apiData.length==0}">
-                <ng-container *ngIf="apiData.length>0; else loading">
+                <ng-container *ngIf="apiData.length>0; else blank">
                     <div class="w-24 home-body__main__template__card" *ngFor="let data of apiData">
                         <ps-card [template]="mainTemplate" [data]="data"></ps-card>
                     </div>
@@ -26,6 +26,6 @@
 <ng-template #mainTemplate let-data>
     <ps-main [data]="data"></ps-main>
 </ng-template>
-<ng-template #loading>
-    <h2 class="w-100 text-center">Loading...</h2>
+<ng-template #blank>
+    <h2 class="w-100 text-center" #emptyMessage>Loading...</h2>
 </ng-template>
