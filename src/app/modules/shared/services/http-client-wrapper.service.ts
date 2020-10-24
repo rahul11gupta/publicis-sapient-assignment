@@ -3,16 +3,16 @@ import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SERVICE_CONSTANTS, ServiceConstantConfig } from '../../../app.constants';
-import { IHttpHeaders, IHttpParams, IHttpGetData } from 'src/app/models/http-wrapper.service.model';
+import { IHttpHeaders, IHttpParams, IHttpGetData, IHttpWrapperService } from 'src/app/models/http-wrapper.service.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpClientWrapperService {
+export class HttpClientWrapperService implements IHttpWrapperService {
 
   constructor(private http: HttpClient, @Inject(SERVICE_CONSTANTS) private serviceConstantsConfig: ServiceConstantConfig, ) { }
 
-  setHeaders(headers: IHttpHeaders[]) {
+  setHeaders(headers: IHttpHeaders[]): HttpHeaders {
     let reqHeader = new HttpHeaders();
     headers.forEach(h => {
       reqHeader.append(h.param, h.value);
@@ -20,7 +20,7 @@ export class HttpClientWrapperService {
     return reqHeader;
   }
 
-  setParams(params: IHttpParams[]) {
+  setParams(params: IHttpParams[]): HttpParams {
     let reqParam = new HttpParams();
     params.forEach(p => {
       reqParam = reqParam.set(p.param, p.value);
@@ -28,7 +28,7 @@ export class HttpClientWrapperService {
     return reqParam;
   }
 
-  setUrl(url: string) {
+  setUrl(url: string): string {
     let apiUrl = this.serviceConstantsConfig.apiUrl + url;
     return apiUrl;
   }
@@ -45,7 +45,7 @@ export class HttpClientWrapperService {
     );
   }
 
-  catchError(error: HttpErrorResponse) {
+  catchError(error: HttpErrorResponse): Observable<never> {
     return throwError(error);
   }
 
