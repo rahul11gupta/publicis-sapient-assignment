@@ -73,8 +73,8 @@ export class FilterComponent implements OnInit, OnDestroy {
           if (r !== 'limit') {
             switch (r) {
               case 'launch_year': this.selectedYear = res[r]; break;
-              case 'launch_success': this.selectedLaunch = Boolean(res[r]); break;
-              case 'land_success': this.selectedLand = Boolean(res[r]); break;
+              case 'launch_success': this.selectedLaunch = res[r]==='true'; break;
+              case 'land_success': this.selectedLand = res[r]==='true'; break;
             }
           }
         });
